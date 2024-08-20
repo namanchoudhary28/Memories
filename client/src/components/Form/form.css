@@ -1,0 +1,12 @@
+.main{
+    display: flex;
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+}

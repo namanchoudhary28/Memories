@@ -1,0 +1,8 @@
+.flex{
+    display: flex;
+    border: 1px solid black;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
