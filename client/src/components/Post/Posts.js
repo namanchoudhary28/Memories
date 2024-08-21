@@ -7,17 +7,15 @@ const Posts = () => {
     const dispatch=useDispatch()
     const postArray=useSelector(state => state.post)
     useEffect(()=>{
-        console.log("hello")
         
         dispatch(getPosts())
     },[postArray.length])
   return (
     <>
-    <div>Posts</div>
     <div className='flex'>
     {postArray.map((item,index)=>{
         return <div key={item._id}>
-            <Post message={item.message} id={item._id} creator={item.creator} title={item.title} />
+            <Post message={item.message} id={item._id} creator={item.creator} title={item.title} selectedFile={item.selectedFile} />
 
 
         </div>

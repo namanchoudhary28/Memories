@@ -1,6 +1,6 @@
-.main{
+.main-form{
     display: flex;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -9,4 +9,22 @@
 .content{
     display: flex;
     flex-direction: column;
+}
+.mb{
+    margin-bottom: 12px;
+}
+
+.submit{
+    width: 100%;
+    margin-bottom: 12px;
+}
+.reset{
+    width: 100%;
+    background-color: rgb(223, 121, 121);
+}
+
+.heading{
+    font-size: x-large;
+    font-weight: 600;
+    color: rgb(0 183 255)
 }

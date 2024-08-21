@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import TextField from '@mui/material/TextField';
 import '../Form/form.css'
-import FileBase from 'react-file-base64'
+import FileBase from 'react-file-base64';
 import { useDispatch,useSelector } from 'react-redux';
 import { add } from '../../store/postSlice';
 import { createPost } from '../../store/postSlice';
-
 
 const Form = () => {
   const dispatch=useDispatch()
@@ -33,12 +32,11 @@ const Form = () => {
         setContent({title:formEditData.title,message:formEditData.message,creator:formEditData.creator,tags:formEditData.tags,selectedFile:formEditData.selectedFile,id:formEditData.id})
 
       }
-      console.log(formEditData)
     }, [formEditData])
     
   return (
-    <div className='main'>
-        <div className='heading'>{heading}</div>
+    <div className='main-form'>
+        <div className='heading mb'>{heading}</div>
 
         <div className='content'>
         <form onSubmit={handleSubmit}>

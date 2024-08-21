@@ -25,7 +25,6 @@ const postSlice = createSlice({
 })
 export const createPost=(post) => async (dispatch) =>{
     try {
-        console.log(post,'api call body')
         const {data} = await api.createPost(post)
         dispatch(add(post))
         
@@ -39,9 +38,7 @@ export const createPost=(post) => async (dispatch) =>{
 }
 export const getPosts=() => async (dispatch) =>{
     try {
-        console.log("hi")
         const {data} = await api.fetchPosts()
-        console.log(data)
         dispatch(get(data))
         
         
@@ -52,7 +49,6 @@ export const getPosts=() => async (dispatch) =>{
 }
 export const deletePost=(post) => async (dispatch) =>{
     try {
-        console.log(post,'api call body')
         const {data} = await api.deletePost(post)
         dispatch(del(post.id))
         

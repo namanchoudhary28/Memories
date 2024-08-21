@@ -1,8 +1,8 @@
 .flex{
     display: flex;
-    border: 1px solid black;
+    /* border: 2px solid black; */
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: space-between; */
+    /* align-items: center; */
     gap: 30px;
 }

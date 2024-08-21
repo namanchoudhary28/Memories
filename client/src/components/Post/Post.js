@@ -30,11 +30,11 @@ const Post = (props) => {
     }
   return (
     <>
-     <Card sx={{ maxWidth: 345 }}>
+     <Card sx={{ maxWidth: 250,minWidth:250, }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
+            {props.creator[0]}
           </Avatar>
         }
         action={
@@ -48,11 +48,17 @@ const Post = (props) => {
       <CardMedia
         component="img"
         height="194"
-        image="/static/images/cards/paella.jpg"
-        alt="Paella dish"
+        image={props.selectedFile || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'}
+        alt={props.selectedFile.length}
       />
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
+        <Typography sx={{ height: 100,
+         overflow: "auto",
+         wordWrap: "break-word",
+  
+
+
+         }}  variant="body2" color="text.secondary">
           {props.message}
         </Typography>
       </CardContent>
