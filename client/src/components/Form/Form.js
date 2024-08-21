@@ -17,8 +17,8 @@ const Form = () => {
     const handleSubmit=(e)=>{
       e.preventDefault()
       dispatch(createPost(content))
+      resetFun()
 
-      console.log(content)
 
     }
     const resetFun=()=>{

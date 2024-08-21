@@ -13,6 +13,11 @@ const postSlice = createSlice({
     get(state,action){
         // console.log(action.payload)
         return [...action.payload]
+    },
+    del(state,action){
+        // console.log(state,action.payload)
+        return state.filter(item => item._id !== action.payload);
+
     }
 
   
@@ -45,6 +50,20 @@ export const getPosts=() => async (dispatch) =>{
         
     }
 }
-export const { add,get } = postSlice.actions
+export const deletePost=(post) => async (dispatch) =>{
+    try {
+        console.log(post,'api call body')
+        const {data} = await api.deletePost(post)
+        dispatch(del(post.id))
+        
+
+
+        
+    } catch (error) {
+        console.log(error.message)
+        
+    }
+}
+export const { add,get,del } = postSlice.actions
 
 export default postSlice.reducer

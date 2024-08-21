@@ -48,10 +48,10 @@ export const createPost=async (req,res)=>{
 }
 
 export const deletePost=async (req,res)=>{
-    const { _id, ...postData } = req.body; // Destructure id from body and separate other data
+    const { id, ...postData } = req.body; // Destructure id from body and separate other data
     console.log('hellooo guys',req.body)
     try {
-        const deletedPost = await PostMessage.findByIdAndDelete(_id);
+        const deletedPost = await PostMessage.findByIdAndDelete(id);
         if (!deletedPost) {
           return res.status(404).json({ message: 'Post not found' });
         }

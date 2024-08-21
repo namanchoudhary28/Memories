@@ -10,7 +10,7 @@ const Posts = () => {
         console.log("hello")
         
         dispatch(getPosts())
-    },[])
+    },[postArray.length])
   return (
     <>
     <div>Posts</div>

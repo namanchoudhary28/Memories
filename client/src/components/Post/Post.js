@@ -12,14 +12,20 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import EditIcon from '@mui/icons-material/Edit';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
 import { update } from '../../store/editSlice';
+import { deletePost } from '../../store/postSlice';
  
 const Post = (props) => {
     const dispatch=useDispatch()
     const sendData=(value)=>{
         dispatch(update(value))
+
+
+    }
+    const deletePos=(value)=>{
+      dispatch(deletePost(value))
 
     }
   return (
@@ -32,8 +38,8 @@ const Post = (props) => {
           </Avatar>
         }
         action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
+          <IconButton aria-label="settings" onClick={()=>{deletePos(props)}}>
+            <DeleteIcon />
           </IconButton>
         }
         title={props.title}
