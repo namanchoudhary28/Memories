@@ -10,7 +10,7 @@ const Home = () => {
     <>
     <Provider store={store}>
       <div className='main-home'>
-        <div><Navbar /></div>
+        {/* <div><Navbar /></div> */}
         <div className='main-content-home'>
             <div className='child postDiv'><Posts/></div>
             <div className='child formDiv'><Form/></div>
