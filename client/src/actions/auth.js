@@ -1,5 +1,6 @@
 import * as api from '../api'
 import { useNavigate } from 'react-router-dom'
+import { login, logout } from '../store/authSlice'
 
 
 export const signUpFun=(data,setFlag,flag,setHeading)=>async(dispatch)=>{
@@ -20,10 +21,12 @@ export const signUpFun=(data,setFlag,flag,setHeading)=>async(dispatch)=>{
 export const signInFun=(data,navigate)=>async(dispatch)=>{
     try {
         // console.log(data)
-        const {value} = await api.signIn(data)
+        const res = await api.signIn(data)
+        console.log(res)
+        dispatch(login(res.data))
         navigate('/')
-        console.log(value)
 
+ 
   
         
         
@@ -32,3 +35,4 @@ export const signInFun=(data,navigate)=>async(dispatch)=>{
         
     }
 }
+
