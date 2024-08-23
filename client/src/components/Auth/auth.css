@@ -1,0 +1,13 @@
+.auth-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signIn{
+    border: 2px solid black;
+    padding: 24px;
+    margin-top:24px ;
+    border-radius: 10px;
+
+}

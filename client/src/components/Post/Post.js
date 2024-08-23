@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -16,8 +16,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
 import { update } from '../../store/editSlice';
 import { deletePost } from '../../store/postSlice';
+import { useLocation } from 'react-router-dom';
  
 const Post = (props) => {
+  let user = JSON.parse(localStorage.getItem('profile'));
+
+  const location=useLocation()
     const dispatch=useDispatch()
     const sendData=(value)=>{
         dispatch(update(value))
@@ -28,6 +32,11 @@ const Post = (props) => {
       dispatch(deletePost(value))
 
     }
+    useEffect(()=>{
+      user = JSON.parse(localStorage.getItem('profile'));
+
+
+   },[location])
   return (
     <>
      <Card sx={{ maxWidth: 250,minWidth:250, }}>
@@ -38,7 +47,7 @@ const Post = (props) => {
           </Avatar>
         }
         action={
-          <IconButton aria-label="settings" onClick={()=>{deletePos(props)}}>
+          <IconButton disabled={!user?.token} aria-label="settings" onClick={()=>{deletePos(props)}}>
             <DeleteIcon />
           </IconButton>
         }
@@ -63,10 +72,10 @@ const Post = (props) => {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton disabled={!user?.token} aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
-        <IconButton aria-label="share" onClick={()=>sendData(props)}>
+        <IconButton disabled={!user?.token} aria-label="share" onClick={()=>sendData(props)}>
           <EditIcon />
         </IconButton>
  
