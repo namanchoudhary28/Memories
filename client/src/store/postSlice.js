@@ -18,6 +18,9 @@ const postSlice = createSlice({
         // console.log(state,action.payload)
         return state.filter(item => item._id !== action.payload);
 
+    },
+    searchPost(state,action){
+        return [...action.payload]
     }
 
   
@@ -60,6 +63,19 @@ export const deletePost=(post) => async (dispatch) =>{
         
     }
 }
-export const { add,get,del } = postSlice.actions
+export const getPostsBySearch = (searchQuery) => async (dispatch) => {
+    try {
+    //   dispatch({ type: START_LOADING });
+    console.log(searchQuery)
+      const { data } = await api.searchPost(searchQuery);
+      console.log(data)
+      dispatch(searchPost(data.data))
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+export const { add,get,del,searchPost } = postSlice.actions
 
 export default postSlice.reducer

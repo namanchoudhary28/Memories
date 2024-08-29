@@ -4,6 +4,7 @@ import Form from '../Form/Form'
 import Posts from '../Post/Posts'
 
 import '../../components/Home/home.css'
+import Search from '../Form/Search'
 const Home = () => {
   return (
     <>
@@ -11,7 +12,10 @@ const Home = () => {
         {/* <div><Navbar /></div> */}
         <div className='main-content-home'>
             <div className='child postDiv'><Posts/></div>
-            <div className='child formDiv'><Form/></div>
+            <div className='child formDiv'>
+              <Search />
+              <Form/>
+              </div>
 
         </div>
 

@@ -6,6 +6,7 @@ import { useDispatch,useSelector } from 'react-redux';
 import { add } from '../../store/postSlice';
 import { createPost } from '../../store/postSlice';
 import { useLocation } from 'react-router-dom';
+import ChipInput from 'material-ui-chip-input'
 
 const Form = () => {
   let user = JSON.parse(localStorage.getItem('profile'));
@@ -15,7 +16,7 @@ const location=useLocation()
   const [heading,setHeading]=useState("Create a Memory")
   const formEditData=useSelector(state => state.edit)
 
-    const [content,setContent]=useState({title:'',message:'',creator:'',tags:'',selectedFile:'',id:''})
+    const [content,setContent]=useState({title:'',message:'',creator:'',tags:[],selectedFile:'',id:''})
 
     const handleSubmit=(e)=>{
       e.preventDefault()
@@ -26,7 +27,7 @@ const location=useLocation()
     }
     const resetFun=()=>{
       setHeading("Create a Memory")
-      setContent({title:'',message:'',creator:'',tags:'',selectedFile:'',id:''})
+      setContent({title:'',message:'',creator:'',tags:[],selectedFile:'',id:''})
 
         
     }
@@ -42,6 +43,10 @@ const location=useLocation()
 
       }
     }, [formEditData])
+    const handleDeleteChip = (chipToDelete) => {
+      setContent({ ...content, tags: content.tags.filter((tag) => tag !== chipToDelete) });
+    };
+  
     
   return (
     <>
@@ -55,7 +60,17 @@ const location=useLocation()
       <div  className="mb"><TextField fullWidth label="creator" id="creator" size="small"  value={content.creator} onChange={(e)=>setContent({...content, creator:e.target.value})} /></div>
       <div  className="mb"><TextField fullWidth label="title" id="creator" size="small"   value={content.title} onChange={(e)=>setContent({...content, title:e.target.value})} /></div>
       <div  className="mb"><TextField fullWidth label="message" id="creator" size="large"   value={content.message} onChange={(e)=>setContent({...content, message:e.target.value})} /></div>
-      <div  className="mb"><TextField fullWidth label="tags" id="creator" size="small" value={content.tags} onChange={(e)=>setContent({...content, tags:e.target.value})} /></div>
+      <div  className="mb">
+        {/* <TextField fullWidth label="tags" id="creator" size="small" value={content.tags} onChange={(e)=>setContent({...content, tags:e.target.value})} /> */}
+        <ChipInput
+                style={{ margin: '10px 0' }}
+                value={content.tags}
+                onAdd={(chip) => setContent({...content, tags:[...content.tags,chip]})}
+                onDelete={(chip) => handleDeleteChip(chip)}
+                label="Search Tags"
+                variant="outlined"
+              />                
+        </div>
       <div className='mb'>
         <FileBase 
           type="file"
